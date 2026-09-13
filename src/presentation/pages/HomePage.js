@@ -68,30 +68,6 @@ export class HomePage {
           </div>
         </section>
 
-        <!-- How it works -->
-        <section class="how-it-works">
-          <div class="container">
-            <h2 class="section-title" style="text-align:center">كيف يعمل السيستم؟</h2>
-            <div class="steps-grid">
-              <div class="step-card">
-                <div class="step-card__icon">📋</div>
-                <h3>اختر من القائمة</h3>
-                <p>تصفّح 8 أنواع بيتزا وأضف ما تريد للسلة بضغطة واحدة</p>
-              </div>
-              <div class="step-card">
-                <div class="step-card__icon">👨‍🍳</div>
-                <h3>المطبخ يستلم</h3>
-                <p>طلبك يظهر فوراً على شاشة المطبخ ويبدأ الطباخ في التحضير</p>
-              </div>
-              <div class="step-card">
-                <div class="step-card__icon">🛵</div>
-                <h3>تتبّع لحظة بلحظة</h3>
-                <p>تابع رحلة بيتزاك من الفرن لحد بيتك في الوقت الحقيقي</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
       </main>`;
 
     await this.#loadMenuGrid(outlet);

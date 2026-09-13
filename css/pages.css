@@ -122,12 +122,6 @@
 .section-header { display: flex; align-items: center; justify-content: space-between; margin-block-end: var(--sp-8); }
 
 /* How it works */
-.how-it-works { padding-block: var(--sp-20); background: var(--c-surface); }
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); margin-block-start: var(--sp-10); }
-.step-card { padding: var(--sp-8); text-align: center; }
-.step-card__icon { font-size: 3rem; margin-block-end: var(--sp-4); }
-.step-card h3 { font-family: var(--f-display); font-size: var(--fs-lg); margin-block-end: var(--sp-3); }
-.step-card p { color: var(--c-muted); line-height: 1.8; }
 
 /* ── Pizza Card ──────────────────────────────────────────── */
 .pizza-card { height: 320px; }
@@ -299,7 +293,6 @@
 @media (max-width: 768px) {
   .hero__content { padding-inline: var(--sp-6); }
   .hero__text { max-width: 100%; }
-  .steps-grid { grid-template-columns: 1fr; }
   .checkout-layout { grid-template-columns: 1fr; }
   .kanban-board { grid-template-columns: 1fr; }
   .admin-stats-grid { grid-template-columns: 1fr 1fr; }
