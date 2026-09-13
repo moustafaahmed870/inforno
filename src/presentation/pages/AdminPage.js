@@ -2,9 +2,10 @@ import { uploadImage } from '../../infrastructure/services/ImageUploadClient.js'
 import { SEED_PIZZAS } from '../../infrastructure/data/seedData.js';
 
 /**
- * Lazily loads Chart.js from CDN only when the admin dashboard actually
- * needs to draw a chart, instead of shipping it on every page of the site.
- * Safe to call multiple times — the script is only injected once.
+ * Loads Chart.js only when the admin dashboard actually needs to draw a
+ * chart, instead of shipping it on every page of the site. Served from
+ * our own /assets/vendor folder (not a public CDN) so it always loads
+ * regardless of ad blockers, corporate firewalls, or CDN outages.
  */
 let chartJsPromise = null;
 function loadChartJs() {
@@ -13,7 +14,7 @@ function loadChartJs() {
 
   chartJsPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js';
+    script.src = '/assets/vendor/chart.umd.min.js';
     script.onload = () => resolve(window.Chart);
     script.onerror = () => reject(new Error('تعذّر تحميل مكتبة الرسم البياني'));
     document.head.appendChild(script);
