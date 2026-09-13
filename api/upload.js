@@ -20,7 +20,23 @@ cloudinary.config({
 
 function getFirebaseAdmin() {
   if (getApps().length) return getApps()[0];
-  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
+
+  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON
+    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON)
+    : {
+        projectId:   process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        // .env stores literal "\n" escapes inside a quoted string; convert
+        // them back to real newlines or the PEM key won't parse.
+        privateKey:  process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      };
+
+  if (!serviceAccount.projectId || !serviceAccount.clientEmail || !serviceAccount.privateKey) {
+    throw new Error(
+      'إعدادات Firebase Admin غير مكتملة: لازم تضيف FIREBASE_SERVICE_ACCOUNT_JSON، أو الثلاثة FIREBASE_PROJECT_ID و FIREBASE_CLIENT_EMAIL و FIREBASE_PRIVATE_KEY في Environment Variables على Vercel.'
+    );
+  }
+
   return initializeApp({ credential: cert(serviceAccount) });
 }
 
