@@ -59,7 +59,9 @@ export class AdminPage {
           <div class="admin-charts-row">
             <div class="card card--raised admin-chart-card fade-up">
               <h3 class="admin-section-title">مبيعات الأسبوع</h3>
-              <canvas id="weeklyChart" height="200"></canvas>
+              <div class="chart-canvas-wrap">
+                <canvas id="weeklyChart"></canvas>
+              </div>
             </div>
             <div class="card card--raised admin-chart-card fade-up">
               <h3 class="admin-section-title">أكثر البيتزا مبيعاً 🏆</h3>

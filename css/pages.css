@@ -208,6 +208,8 @@
 .admin-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-5); margin-block-end: var(--sp-8); }
 .admin-charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); }
 .admin-chart-card { padding: var(--sp-6); }
+.chart-canvas-wrap { position: relative; height: 280px; width: 100%; margin-block-start: var(--sp-4); }
+.chart-canvas-wrap canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
 .admin-section-title { font-family: var(--f-display); font-size: var(--fs-lg); margin-block-end: var(--sp-5); }
 .admin-table-header { display: flex; justify-content: space-between; align-items: center; padding: var(--sp-5) var(--sp-5) 0; }
 .admin-header { display: flex; justify-content: space-between; align-items: center; margin-block-end: var(--sp-6); }
