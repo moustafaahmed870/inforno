@@ -1,0 +1,11 @@
+{
+  "name": "inferno-pizza",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Inferno Pizza — frontend (vanilla JS + Firebase) with Vercel serverless API",
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "firebase-admin": "^12.7.0"
+  }
+}

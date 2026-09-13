@@ -1,0 +1,66 @@
+/* ============================================================
+   Design Tokens — single source of truth for the entire system
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700&display=swap');
+
+:root {
+  /* ── Brand Colors ──────────────────────────────────────────── */
+  --c-red:       #E8230A;
+  --c-red-dark:  #B01B08;
+  --c-red-glow:  rgba(232,35,10,.35);
+  --c-gold:      #D4A017;
+  --c-gold-light:#F0C040;
+  --c-bg:        #0D0D0D;
+  --c-surface:   #161616;
+  --c-surface-2: #1F1F1F;
+  --c-surface-3: #282828;
+  --c-border:    rgba(255,255,255,.08);
+  --c-text:      #F0EDE8;
+  --c-muted:     #8A8480;
+  --c-success:   #22C55E;
+  --c-warning:   #F59E0B;
+  --c-error:     #EF4444;
+
+  /* ── Typography ────────────────────────────────────────────── */
+  --f-display: 'Playfair Display', Georgia, serif;
+  --f-body:    'Tajawal', 'Segoe UI', sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   1.375rem;
+  --fs-xl:   1.75rem;
+  --fs-2xl:  2.25rem;
+  --fs-3xl:  3rem;
+  --fs-4xl:  4rem;
+
+  /* ── Spacing ───────────────────────────────────────────────── */
+  --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px;  --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+
+  /* ── Radii ─────────────────────────────────────────────────── */
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 32px; --r-full: 9999px;
+
+  /* ── Shadows ───────────────────────────────────────────────── */
+  --shadow-sm:   0 2px 8px rgba(0,0,0,.4);
+  --shadow-md:   0 8px 32px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.3);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.4);
+  --shadow-glow: 0 0 24px var(--c-red-glow), 0 0 48px rgba(232,35,10,.15);
+  --shadow-gold: 0 0 20px rgba(212,160,23,.3);
+
+  /* ── 3D ────────────────────────────────────────────────────── */
+  --perspective: 1200px;
+  --card-depth:  30px;
+
+  /* ── Transitions ───────────────────────────────────────────── */
+  --t-fast:   150ms ease;
+  --t-base:   300ms cubic-bezier(.4,0,.2,1);
+  --t-spring: 500ms cubic-bezier(.175,.885,.32,1.275);
+  --t-slow:   700ms cubic-bezier(.4,0,.2,1);
+
+  /* ── Layout ────────────────────────────────────────────────── */
+  --max-w: 1280px;
+  --nav-h: 68px;
+}
