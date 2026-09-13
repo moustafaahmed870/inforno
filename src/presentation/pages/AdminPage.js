@@ -2,6 +2,26 @@ import { uploadImage } from '../../infrastructure/services/ImageUploadClient.js'
 import { SEED_PIZZAS } from '../../infrastructure/data/seedData.js';
 
 /**
+ * Lazily loads Chart.js from CDN only when the admin dashboard actually
+ * needs to draw a chart, instead of shipping it on every page of the site.
+ * Safe to call multiple times — the script is only injected once.
+ */
+let chartJsPromise = null;
+function loadChartJs() {
+  if (window.Chart) return Promise.resolve(window.Chart);
+  if (chartJsPromise) return chartJsPromise;
+
+  chartJsPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js';
+    script.onload = () => resolve(window.Chart);
+    script.onerror = () => reject(new Error('تعذّر تحميل مكتبة الرسم البياني'));
+    document.head.appendChild(script);
+  });
+  return chartJsPromise;
+}
+
+/**
  * @module AdminPage
  * Management dashboard — overview, products (CRUD), homepage content editor
  */
@@ -107,7 +127,7 @@ export class AdminPage {
       ]);
 
       this.#renderStats(outlet, stats);
-      this.#renderWeeklyChart(outlet, stats.weeklyRevenue);
+      await this.#renderWeeklyChart(outlet, stats.weeklyRevenue);
       this.#renderTopPizzas(outlet, stats.topPizzas);
       this.#renderOrdersTable(outlet, orders);
       this.#attachSearch(outlet, orders);
@@ -144,9 +164,18 @@ export class AdminPage {
       </div>`;
   }
 
-  #renderWeeklyChart(outlet, weeklyRevenue) {
+  async #renderWeeklyChart(outlet, weeklyRevenue) {
     const canvas = outlet.querySelector('#weeklyChart');
-    if (!canvas || !window.Chart) return;
+    if (!canvas) return;
+
+    let Chart;
+    try {
+      Chart = await loadChartJs();
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
     new Chart(canvas, {
       type: 'bar',
       data: {
